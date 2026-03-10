@@ -1,63 +1,262 @@
+import type { Viewport } from "next";
 import Image from "next/image";
+import {
+  Globe,
+  ShoppingBag,
+  Images,
+  BookOpen,
+  Layers,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Linkedin,
+  ChevronRight,
+} from "lucide-react";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+const onlineLinks = [
+  {
+    label: "Visit Our Website",
+    href: "https://www.ddbuildingtech.com",
+    icon: Globe,
+  },
+  {
+    label: "Shop",
+    href: "https://www.ddbuildingtech.com/products.php",
+    icon: ShoppingBag,
+  },
+  {
+    label: "Gallery",
+    href: "https://www.ddbuildingtech.com/gallery.php",
+    icon: Images,
+  },
+  {
+    label: "Blog",
+    href: "https://www.ddbuildingtech.com/blog.php",
+    icon: BookOpen,
+  },
+  {
+    label: "Our Services",
+    href: "/services",
+    icon: Layers,
+  },
+];
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/dd-buildingtech/",
+    icon: Linkedin,
+  },
+];
+
+const contactLinks = [
+  {
+    label: "+234 916 121 2301",
+    href: "tel:+2349161212301",
+    icon: Phone,
+  },
+  {
+    label: "+234 806 611 3394",
+    href: "tel:+2348066113394",
+    icon: Phone,
+  },
+  {
+    label: "WhatsApp Us",
+    href: "https://wa.me/2349161212301",
+    icon: MessageCircle,
+  },
+  {
+    label: "sales@ddbuildingtech.com",
+    href: "mailto:sales@ddbuildingtech.com",
+    icon: Mail,
+  },
+  {
+    label: "support@ddbuildingtech.com",
+    href: "mailto:support@ddbuildingtech.com",
+    icon: Mail,
+  },
+  {
+    label: "Awka Office — View on Map",
+    href: "https://maps.google.com/?q=Awka+Anambra+Nigeria",
+    icon: MapPin,
+  },
+];
+
+function LinkCard({
+  label,
+  href,
+  icon: Icon,
+  external = true,
+}: {
+  label: string;
+  href: string;
+  icon: React.ElementType;
+  external?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : "_self"}
+      rel={external ? "noopener noreferrer" : undefined}
+      className="link-card"
+    >
+      <span className="icon">
+        <Icon size={18} />
+        <span style={{ fontWeight: 500, fontSize: "0.9rem" }}>{label}</span>
+      </span>
+      <ChevronRight size={16} className="chevron" />
+    </a>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="content">
+      {/* Header */}
+      <header
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(15,32,68,0.9) 0%, rgba(10,22,40,0.6) 100%)",
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          paddingBottom: "2.5rem",
+        }}
+      >
+        <div
+          className="mobile-pad"
+          style={{
+            maxWidth: "560px",
+            margin: "0 auto",
+            padding: "3rem 1.5rem 0",
+            textAlign: "center",
+          }}
+        >
+          {/* Logo */}
+          <div
+            style={{
+              width: "96px",
+              height: "96px",
+              margin: "0 auto 1.25rem",
+              borderRadius: "50%",
+              overflow: "hidden",
+              background: "rgba(255,255,255,0.08)",
+              border: "2px solid rgba(249,115,22,0.3)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 0 30px rgba(59,130,246,0.2)",
+              padding: "8px",
+            }}
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/dd_logo.png"
+              alt="DD Building Tech logo"
+              width={80}
+              height={80}
+              style={{ objectFit: "contain" }}
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+
+          {/* Company Name */}
+          <h1
+            style={{
+              fontSize: "clamp(1.5rem, 5vw, 2rem)",
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+              marginBottom: "0.5rem",
+            }}
           >
-            Documentation
-          </a>
+            <span className="gradient-text">DD Building Tech</span>
+          </h1>
+
+          {/* Accent Line */}
+          <div className="accent-line" />
+
+          {/* Tagline */}
+          <p
+            style={{
+              color: "#94a3b8",
+              fontWeight: 300,
+              fontSize: "clamp(0.8rem, 3.5vw, 0.9rem)",
+              lineHeight: 1.6,
+              maxWidth: "380px",
+              margin: "0 auto",
+            }}
+          >
+            Power the Grid. Secure the Perimeter.
+            <br />
+            Advanced systems for solar energy, security & building automation.
+          </p>
+        </div>
+      </header>
+
+      {/* Main content */}
+      <main
+        className="mobile-pad"
+        style={{
+          maxWidth: "560px",
+          margin: "0 auto",
+          padding: "2rem 1.5rem 3rem",
+        }}
+      >
+        {/* Online */}
+        <section style={{ marginBottom: "2rem" }}>
+          <p className="section-label">Online</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+            {onlineLinks.map((link) => (
+              <LinkCard
+                key={link.href}
+                {...link}
+                external={link.href.startsWith("http")}
+              />
+            ))}
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        {/* Social */}
+        <section style={{ marginBottom: "2rem" }}>
+          <p className="section-label">Social Media</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+            {socialLinks.map((link) => (
+              <LinkCard key={link.href} {...link} />
+            ))}
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        {/* Contact */}
+        <section style={{ marginBottom: "2rem" }}>
+          <p className="section-label">Contact</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+            {contactLinks.map((link) => (
+              <LinkCard key={link.href} {...link} />
+            ))}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "2.5rem",
+            paddingTop: "1.5rem",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+          }}
+        >
+          <p style={{ fontSize: "0.75rem", color: "#475569" }}>
+            © {new Date().getFullYear()} DD Building Tech — Advanced Systems
+          </p>
         </div>
       </main>
     </div>
