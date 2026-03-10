@@ -145,21 +145,16 @@ export default function Home() {
               margin: "0 auto 1.25rem",
               borderRadius: "50%",
               overflow: "hidden",
-              background: "rgba(255,255,255,0.08)",
               border: "2px solid rgba(249,115,22,0.3)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               boxShadow: "0 0 30px rgba(59,130,246,0.2)",
-              padding: "8px",
+              position: "relative",
             }}
           >
             <Image
               src="/dd.jpg"
               alt="DD Building Tech logo"
-              width={80}
-              height={80}
-              style={{ objectFit: "contain" }}
+              fill
+              style={{ objectFit: "cover" }}
               priority
             />
           </div>
