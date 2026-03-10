@@ -155,7 +155,7 @@ export default function Home() {
             }}
           >
             <Image
-              src="/dd_logo.png"
+              src="/dd.jpg"
               alt="DD Building Tech logo"
               width={80}
               height={80}
